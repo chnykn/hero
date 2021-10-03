@@ -65,9 +65,9 @@ func genAbsPath(path string) string {
 	return path
 }
 
-func checkFileError(trimPath,file string, err error) {
+func checkFileError(trimPath, file string, err error) {
 	if err != nil {
-		log.Fatal(strings.TrimPrefix(file,trimPath + "/") + ": " + err.Error())
+		log.Fatal(strings.TrimPrefix(file, trimPath+"/") + ": " + err.Error())
 	}
 }
 
@@ -204,7 +204,7 @@ func Generate(source, dest, pkgName string, extensions []string) {
 	sourceDir := source
 
 	srcStat, err := os.Stat(source)
-	checkFileError("",source,err)
+	checkFileError("", source, err)
 
 	fmt.Println("Parsing...")
 	if srcStat.IsDir() {
@@ -276,14 +276,14 @@ func Generate(source, dest, pkgName string, extensions []string) {
 			definition := definitions[0].chunk.String()
 
 			funcDecl, err := parseDefinition(definition)
-			checkFileError(sourceDir,source,err)
+			checkFileError(sourceDir, source, err)
 
 			buffer.WriteString(definition)
 			buffer.WriteString(`{
 			`)
 
 			paramName, paramType, err := parseParams(funcDecl)
-			checkFileError(sourceDir,source,err)
+			checkFileError(sourceDir, source, err)
 
 			if paramType == TypeIOWriter {
 				bufName := "_buffer"
@@ -322,6 +322,6 @@ func Generate(source, dest, pkgName string, extensions []string) {
 	fmt.Println("Executing goimports...")
 	execCommand("goimports -w " + dest)
 
-	fmt.Println("Executing go vet...")
-	execCommand("go vet " + dest)
+	//fmt.Println("Executing go vet...")
+	//execCommand("go vet " + dest)
 }
