@@ -65,7 +65,7 @@ func TestGenAbsPath(t *testing.T) {
 }
 
 func TestGenerate(t *testing.T) {
-	Generate(rootDir, rootDir, "template")
+	Generate(rootDir, rootDir, "template", make([]string, 0))
 
 	cases := []struct {
 		file string
@@ -92,7 +92,7 @@ package template
 import (
 	"bytes"
 
-	"github.com/shiyanhui/hero"
+	"github.com/chnykn/hero"
 )
 
 func Add(a, b int) int {
@@ -137,7 +137,7 @@ package template
 import (
 	"io"
 
-	"github.com/shiyanhui/hero"
+	"github.com/chnykn/hero"
 )
 
 func UserListToWriter(userList []string, w io.Writer) {
@@ -181,7 +181,7 @@ package template
 import (
 	"io"
 
-	"github.com/shiyanhui/hero"
+	"github.com/chnykn/hero"
 )
 
 func UserListToWriterWithResult(userList []string, w io.Writer) (n int, err error) {
