@@ -1,4 +1,6 @@
 *.log
 *.exe
+*.rar
+/github.token
 /go.sum
 /.idea/
